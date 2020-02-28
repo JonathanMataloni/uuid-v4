@@ -39,6 +39,7 @@ describe('Dev flow', () => {
         UUIDv4.blockingError = false;
         expect(() => new UUIDv4('12345')).not.toThrowError();
         expect(consoleWarn).toBeCalledTimes(1);
+        UUIDv4.blockingError = true;
     });
 
     it("doesn't give direct access to private methods & properties", () => {
@@ -46,7 +47,7 @@ describe('Dev flow', () => {
         expect(() => uuid._id()).toThrowError();
         expect(() => uuid._uuidPattern()).toThrowError();
         expect(() => uuid._validationRegex()).toThrowError();
-        expect(() => uuid._throwInvalidIdError()).toThrowError();
+        expect(() => uuid._throwInvalidIdError('opp')).toThrowError();
     });
 
     it('give access to protected methods & properties to children classes', () => {
