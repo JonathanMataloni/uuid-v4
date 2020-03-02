@@ -72,7 +72,7 @@ Create a UUIDv4 instance with an own generated random uuid. You can pass a custo
 
 ### UUIDv4.blockingError
 
-- _boolean_
+- static _boolean_
 
 Generate a warn instead of stopping execution at runtime. If you provide an invalid uuid to the constructor, it will generates a new valid one
 
@@ -170,6 +170,7 @@ const uuidv4Instance = new UUIDv4();
 const validId = "s4F68hFDf-d3R5-4Rt6-dRgi-dEji85feY51s";
 const invalidId = "s4F68";
 
+
 uuidv4Instance.id = validId;
 
 console.log(uuidv4Instance.id);
@@ -179,6 +180,14 @@ console.log(uuidv4Instance.id);
 uuidv4Instance.id = invalidId;
 // Execution stops due to an error
 // Expected output: The provided UUIDv4 "s4F68h" string doesn't pass the validation. Use a valid UUIDv4 string or generate a new one
+
+
+UUIDv4.blockingError = false;
+
+uuidv4Instance.id = invalidId
+// Execution DOES NOT stop, a warn is emitted and a new generated id assigned to the instance
+// Expected output: e5F68hFDf-d3R5-4Rt6-dRgi-dEji85feY34p
+
 ```
 
 ### Links
