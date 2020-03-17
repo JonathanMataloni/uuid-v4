@@ -1,5 +1,6 @@
 /**
- * Generate, manage and validate Universally Unique Identifiers v4. For usage and details, see the [documentation](https://github.com/JonathanMataloni/uuidv4)
+ * Generate, manage and validate Universally Unique Identifiers v4.
+ * For usage and details, see the [documentation](https://github.com/JonathanMataloni/uuidv4)
  */
 export default class UUIDv4 {
     protected readonly _validationRegex: RegExp;
@@ -16,6 +17,10 @@ export default class UUIDv4 {
     * @returns A valid UUID v4 as string
     */
     static generate: () => string;
+    /**
+    * Generate a new instance ID that override the old one
+    * @returns A valid UUID v4 as string
+    */
     renewId: () => void;
     /**
     * Validate an UUID v4 string, instance or UUIDv4-like object

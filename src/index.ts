@@ -45,6 +45,10 @@ export default class UUIDv4 {
       return (char === "x" ? rand : (rand & 0x3) | 0x8).toString(16);
     });
 
+  /**
+  * Generate a new instance ID that override the old one
+  * @returns A valid UUID v4 as string
+  */
   public renewId = (): void => {
     this._id = UUIDv4.generate();
   }
