@@ -12,7 +12,8 @@ const checkRuntimeType = (arg: any): arg is UUIDv4RuntimeValidator => {
 };
 
 /**
- * Generate, manage and validate Universally Unique Identifiers v4. For usage and details, see the [documentation](https://github.com/JonathanMataloni/uuidv4)
+ * Generate, manage and validate Universally Unique Identifiers v4. 
+ * For usage and details, see the [documentation](https://github.com/JonathanMataloni/uuidv4)
  */
 export default class UUIDv4 {
   protected readonly _validationRegex = validationRegex;
