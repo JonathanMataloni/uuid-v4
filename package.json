@@ -1,0 +1,25 @@
+{
+  "name": "@jonathanmataloni/uiid-v4",
+  "description": "Generate, manage and validate Universally Unique Identifiers v4",
+  "version": "1.0.0",
+  "tag": "1.0",
+  "author": "Jonathan Mataloni",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "keywords": [],
+  "license": "ISC",
+  "scripts": {
+    "tsc": "tsc",
+    "typedoc": "typedoc"
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "asddsa"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}
