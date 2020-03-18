@@ -15,7 +15,7 @@ According to the [Birthday Paradox](https://en.wikipedia.org/wiki/Birthday_probl
 ### Installation
 
 ``` 
-$npm install @JonathanMataloni/uuid-v4
+$npm install @jonathanmataloni/uuid-v4
 ```
 
 ### Usage

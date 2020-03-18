@@ -1,5 +1,5 @@
 {
-  "name": "@jonathanmataloni/uiid-v4",
+  "name": "@jonathanmataloni/uuid-v4",
   "description": "Generate, manage and validate Universally Unique Identifiers v4",
   "version": "1.0.0",
   "tag": "1.0",
