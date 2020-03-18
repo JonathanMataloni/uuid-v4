@@ -15,22 +15,24 @@ According to the [Birthday Paradox](https://en.wikipedia.org/wiki/Birthday_probl
 ### Installation
 
 ``` 
-$npm install uuid-v4
+$npm install @JonathanMataloni/uuid-v4
 ```
 
 ### Usage
 
-| Property                    | Type          | Description                                                                                      |
-| :-------------------------- | :------------ | :----------------------------------------------------------------------------------------------- |
-| *get* id                    | public string | Return the current UUID of the instance. It's always valid                                       |
-| *set* id                    | public string | Set a new custom UUID. It can generate an error if the provided UUID doesn't pass the validation |
-| renewId(): void             | public method | Generate a new instance ID that override the old one                                             |
-| generate(): string          | static method | Return a valid UUID v4 string                                                                    |
-| validate(*string*): boolean | static method | Return true if the provided UUID string passes the validation                                    |
-| validate(*Object*): boolean | static method | Return true if the provided Object has a valid UUID and format                                   |
-| validate(*UUIDv4*): boolean | static method | Return true if the provided UUIDv4 instance has a valid UUID and format                          |
+| Property                    | Description                                                                                      |
+| :-------------------------- | :----------------------------------------------------------------------------------------------- |
+| *get* id                    | Return the current UUID of the instance. It's always valid                                       |
+| *set* id                    | Set a new custom UUID. It can generate an error if the provided UUID doesn't pass the validation |
+| stopExecutionAtError        | NOT SAFE - Generate a warn instead of stopping execution at runtime                              |
+| renewId(): void             | Generate a new instance ID that override the old one                                             |
+| generate(): string          | Return a valid UUID v4 string                                                                    |
+| validate(*string*): boolean | Return true if the provided UUID string passes the validation                                    |
+| validate(*Object*): boolean | Return true if the provided Object has a valid UUID and format                                   |
+| validate(*UUIDv4*): boolean | Return true if the provided UUIDv4 instance has a valid UUID and format                          |
 
 ### Examples
+
 
 * Create an UUIDv4 instance with a random generated UUID v4
 
@@ -48,6 +50,7 @@ console.log(userId.id)
 // Expected output: "s4F68hFDf-d3R5-4Rt6-dRgi-dEji85feY51s"
 ```
 
+
 * Create a UUIDv4 instance with a custom string
 
 ``` js
@@ -64,29 +67,30 @@ const userId2 = new UUIDv4("s4F68hF")
 // Expected output: The provided UUIDv4 "s4F68hF" string did't pass the validation. Use a valid UUIDv4 string or generate a new one
 ```
 
+
 * Validate an UUIDv4 instance, an UUIDv4-like object or an UUID v4 string
 
 ``` js
 import UUIDv4 from 'uuid-v4'
 
 const importedId = "s4F68hFDf-d3R5-4Rt6-dRgi-dEji85feY51s"
-const importedIdInstance = new UUIDv4()
-const importedIdObject = {
-    _id: "s4F68hFDf-d3R5-4Rt6-dRgi-dEji85feY51s"
-}
-
 console.log(UUIDv4.validate(importedId))
 // Return true if the provided ID respect the UUID v4 standards
 // Expected output: true
 
+const importedIdInstance = new UUIDv4()
 console.log(UUIDv4.validate(importedIdInstance))
 // Return true if the provided object is a valid UUIDv4 instance and the ID respects the UUID v4 standards
 // Expected output: true
 
+const importedIdObject = {
+    _id: "s4F68hFDf-d3R5-4Rt6-dRgi-dEji85feY51s"
+}
 console.log(UUIDv4.validate(importedIdObject))
 // Return true if the provided object can be cast to a valid UUIDv4 instance and the ID respect the UUID v4 standards
 // Expected output: true
 ```
+
 
 * Set a new custom id
 

@@ -5,24 +5,38 @@ interface UUIDv4RuntimeValidator {
   _id: string;
 }
 
+/**
+ * Base string for UUIDv4 generation. The "4" in the 3th block indicates the UUID version 
+ */
 const baseString = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";
+
+/**
+ * Validatation regular expression for runtime checks
+ */
 const validationRegex = /^[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-4[A-Za-z0-9]{3}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}$/;
+
+/**
+ * Runtime custom type guard
+ * @param arg UUIDv4-like object to check
+ * @return UUIDv4-like object validity
+ */
 const checkRuntimeType = (arg: any): arg is UUIDv4RuntimeValidator => {
   return arg && arg._id && typeof arg._id == "string";
 };
 
 /**
  * Generate, manage and validate Universally Unique Identifiers v4. 
- * For usage and details, see the [documentation](https://github.com/JonathanMataloni/uuidv4)
+ * For usage and details, see the [documentation](https://github.com/JonathanMataloni/uuid-v4)
  */
 export default class UUIDv4 {
   protected readonly _validationRegex = validationRegex;
   protected _id: string;
   protected readonly _baseString = baseString;
+  static stopExecutionAtError: boolean = true;
 
   /**
    * Create a new UUIDv4 instance.
-   * @param id Initialize with custom UUID v4. It will be validated at runtime and it could be throw an error. If not specified, a valid random one will be generated.
+   * @param id Initialize with custom UUID v4. It will be validated at runtime and it could generate an error. If not specified, a valid random one will be generated.
    */
   constructor(id?: string) {
     if (id) {
@@ -31,8 +45,15 @@ export default class UUIDv4 {
     } else this._id = UUIDv4.generate();
   }
 
-  private _throwError = (id: string): never => {
-    throw new Error(`The provided UUIDv4 "${id}" string did't pass the validation. Use a valid UUIDv4 string or generate a new one`);
+  /**
+  * Generate a new Error or warn message
+  * @param id Invalid UUID 
+  * @private
+  */
+  private _throwError = (id: string): void | never => {
+    if (UUIDv4.stopExecutionAtError)
+      throw new Error(`The provided UUIDv4 "${id}" string did't pass the validation. Use a valid UUIDv4 string or generate a new one`);
+    else console.warn(`The provided UUIDv4 "${id}" string did't pass the validation. Use a valid UUIDv4 string or generate a new one`)
   };
 
   /**
@@ -71,17 +92,14 @@ export default class UUIDv4 {
   }
 
   /**
-   * Return the current UIID v4 of the instance
+   * Get or set the current UIID v4 of the instance
+   * @param id A valid UIID v4 string. It will be validated at runtime and it could generate an error.
    * @returns The current UIID v4 of the instance
    */
   get id() {
     return this._id;
   }
 
-  /**
-   * Re-assign a custom UIID v4 to the UUIDv4 instance.
-   * @param id A valid UIID v4 string. It will be validated at runtime and it could be throw an error.
-   */
   set id(id: string) {
     if (!UUIDv4.validate(id)) this._throwError(id);
     this._id = id;
