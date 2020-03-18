@@ -65,10 +65,5 @@
   },
   "include": [
     "src/**/*"
-  ],
-  "typedocOptions": {
-    "inputFiles": ["./src"],
-    "mode": "modules",
-    "out": "docs"
-}
+  ]
 }
