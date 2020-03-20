@@ -52,8 +52,8 @@ export default class UUIDv4 {
   */
   private _throwError = (id: string): void | never => {
     if (UUIDv4.stopExecutionAtError)
-      throw new Error(`The provided UUIDv4 "${id}" string did't pass the validation. Use a valid UUIDv4 string or generate a new one`);
-    else console.warn(`The provided UUIDv4 "${id}" string did't pass the validation. Use a valid UUIDv4 string or generate a new one`)
+      throw new Error(`The provided UUIDv4 "${id}" string doesn't pass the validation. Use a valid UUIDv4 string or generate a new one`);
+    else console.warn(`The provided UUIDv4 "${id}" string doesn't pass the validation. Use a valid UUIDv4 string or generate a new one`)
   };
 
   /**

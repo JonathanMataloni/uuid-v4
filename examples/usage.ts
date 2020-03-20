@@ -24,7 +24,7 @@ console.log(userId)
 
 const userId2 = new UUIDv4("s4F68hF")
 // Execution stops due to an error
-// Expected output: The provided UUIDv4 "s4F68hF" string did't pass the validation. Use a valid UUIDv4 string or generate a new one
+// Expected output: The provided UUIDv4 "s4F68hF" string doesn't pass the validation. Use a valid UUIDv4 string or generate a new one
 
 
 /**
@@ -64,7 +64,7 @@ console.log(uuidv4Instance.id)
 
 uuidv4Instance.id = invalidId
 // Execution stops due to an error
-// Expected output: The provided UUIDv4 "s4F68h" string did't pass the validation. Use a valid UUIDv4 string or generate a new one
+// Expected output: The provided UUIDv4 "s4F68h" string doesn't pass the validation. Use a valid UUIDv4 string or generate a new one
 
 
 /**
@@ -87,7 +87,7 @@ UUIDv4.stopExecutionAtError = false
 
 const invalidUUID1 = "s4F68"
 const userUUID1 = new UUIDv4(invalidUUID)
-// Generated warn: The provided UUIDv4 "s4F68h" string did't pass the validation. Use a valid UUIDv4 string or generate a new one
+// Generated warn: The provided UUIDv4 "s4F68h" string doesn't pass the validation. Use a valid UUIDv4 string or generate a new one
 
 console.log(userUUID1.id)
 // Return the provided invalid id
